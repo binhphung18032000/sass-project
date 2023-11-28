@@ -118,45 +118,88 @@
 // }
 
 /* 3. @content */
-@mixin grid($column, $spacing) {
-    --column: #{$column};
-    --spacing: #{$spacing};
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: var(--spacing);
-    margin-left: calc(-1 * var(--spacing));
-    > * {
-        width: calc(100% / var(--column) - var(--spacing));
-        margin-left: var(--spacing);
-    }
-}
-@mixin screen($device) {
-    @if $device == tablet {
-        @media(max-width: 991.98px) {
-            @content;
-        }
-    }
-    @if $device == mobile {
-        @media(max-width: 575.98px) {
-            @content;
-        }
-    }
-}
-.list {
-    @include grid(4, 30px);
-    @include screen(tablet) {
-        --column: 2;
-        --spacing: 20px;
-    }
-    @include screen(mobile) {
-        --column: 1;
-        --spacing: 10px;
-    }
-    .item {
-        background: cadetblue;
-        font: {
-            size: 20px;
-            weight: 600;
-        }
-    }
-}
+// @mixin grid($column, $spacing) {
+//     --column: #{$column};
+//     --spacing: #{$spacing};
+//     display: flex;
+//     flex-wrap: wrap;
+//     row-gap: var(--spacing);
+//     margin-left: calc(-1 * var(--spacing));
+//     > * {
+//         width: calc(100% / var(--column) - var(--spacing));
+//         margin-left: var(--spacing);
+//     }
+// }
+// @mixin screen($device) {
+//     @if $device == tablet {
+//         @media(max-width: 991.98px) {
+//             @content;
+//         }
+//     }
+//     @if $device == mobile {
+//         @media(max-width: 575.98px) {
+//             @content;
+//         }
+//     }
+// }
+// .list {
+//     @include grid(4, 30px);
+//     @include screen(tablet) {
+//         --column: 2;
+//         --spacing: 20px;
+//     }
+//     @include screen(mobile) {
+//         --column: 1;
+//         --spacing: 10px;
+//     }
+//     .item {
+//         background: cadetblue;
+//         font: {
+//             size: 20px;
+//             weight: 600;
+//         }
+//     }
+// }
+
+/* 4. @if, @else if & @else */
+// $condition: 10;
+// h1 {
+//     @if $condition > 10 {
+//         color: red;
+//     } @else if $condition < 10 {
+//         color: yellow;
+//     } @else {
+//         color: green;
+//     }
+// }
+// h1 {
+//     color: if($condition, blue, pink);
+// }
+
+/* 5. @each */
+// $break-points: (
+//     "sm": 575px,
+//     "md": 768px,
+//     "lg": 991px,
+//     "xl": 1140px,
+//     "xxl": 1320px,
+// );
+// @each $infix, $break-point in $break-points {
+//     @media (min-width: $break-point) {
+//         .col-#{$infix} {
+//             width: 100px;
+//         }
+//     }
+// }
+
+/* 6. @for */
+// @for $i from 1 through 12 {
+//     .col-#{$i} {
+//         --column-number: #{$i};
+//     }
+// }
+
+/* 7. @debug */
+// @for $i from 1 to 10 {
+//     @debug $i;
+// }
