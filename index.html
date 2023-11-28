@@ -34,16 +34,57 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="./assets/fonts/stylesheet.css" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
   <body>
-    <h2>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero accusantium
-      praesentium ex numquam consequatur molestias eaque, tempora ea. Nam cumque
-      repellendus possimus exercitationem necessitatibus esse et ea quidem quas
-      provident cum earum deleniti, odio laborum porro nemo, dignissimos beatae
-      laboriosam deserunt distinctio dolore perspiciatis culpa. A sit eaque
-      accusantium nisi nobis quis obcaecati libero nihil harum commodi.
-      Doloremque, expedita.
-    </h2>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+      }
+
+      .ml-20 {
+        margin-left: 20px;
+      }
+    </style>
+    <!-- 1. @extend: -->
+    <div class="container">
+      <div class="btn-primary">primary</div>
+      <div class="ml-20 btn-secondary">secondary</div>
+      <div class="ml-20 btn-success">success</div>
+      <div class="ml-20 btn-danger">danger</div>
+      <div class="ml-20 btn-warning">warning</div>
+      <div class="ml-20 btn-info">info</div>
+    </div>
+
+    <!-- 2. @mixin and @include: -->
+    <!-- <div>
+      <div class="box-1">Box 1</div>
+      <div class="box-2">Box 2</div>
+    </div> -->
+
+    <!-- 2.2. Example about @mixin and @include: -->
+    <!-- <div class="list">
+      <div class="item">item 1</div>
+      <div class="item">item 2</div>
+      <div class="item">item 3</div>
+      <div class="item">item 4</div>
+      <div class="item">item 5</div>
+      <div class="item">item 6</div>
+      <div class="item">item 7</div>
+      <div class="item">item 8</div>
+      <div class="item">item 9</div>
+      <div class="item">item 10</div>
+      <div class="item">item 11</div>
+      <div class="item">item 12</div>
+      <div class="item">item 13</div>
+      <div class="item">item 14</div>
+      <div class="item">item 15</div>
+      <div class="item">item 16</div>
+    </div> -->
   </body>
 </html>

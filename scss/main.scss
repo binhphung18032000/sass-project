@@ -1,2 +1,162 @@
-@use "./base/reset";
-@use "./base/base";
+//Base:
+@import "base/variables";
+@import "base/mixins";
+@import "base/reset";
+@import "base/common";
+// Components:
+@import "components/header";
+@import "components/navigation";
+@import "components/sidebar";
+
+
+/* ==== Main SCSS === */
+
+/* 1. @extend */
+// .btn-base {
+//     padding: 12px 20px;
+//     border: none;
+//     border-radius: 8px;
+//     color: #fff;
+//     font-size: 14px;
+//     font-weight: 600;
+// }
+
+// .btn-primary {
+//     @extend .btn-base;
+//     background: $primary-color;
+// }
+
+// .btn-secondary{
+//     @extend .btn-base;
+//     background: $secondary-color;
+// }
+// .btn-success{
+//     @extend .btn-base;
+//     background: $success-color;
+// }
+
+// /* 1.1. Placeholder selector */
+// %btn-base {
+//     padding: 12px 20px;
+//     border: none;
+//     border-radius: 8px;
+//     color: #fff;
+//     font-size: 14px;
+//     font-weight: 600;
+// }
+
+// .btn-danger{
+//     @extend %btn-base;
+//     background: $danger-color;
+// }
+// .btn-warning{
+//     @extend %btn-base;
+//     background: $warning-color;
+// }
+// .btn-info{
+//     @extend %btn-base;
+//     background: $info-color;
+// }
+
+/* 2. @mixin and @include */
+// @mixin flexCenter {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+// @mixin boxSize($width, $height) {
+//     width: $width;
+//     height: $height;
+// }
+// @mixin rounded($tl, $tr: $tl, $br: $tl, $bl: $tl) {
+//     border-radius: $tl $tr $br $bl;
+// }
+// .box-1 {
+//     @include flexCenter;
+//     @include boxSize(200px, 300px);
+//     @include rounded(20px, 50px, 20px, 50px);
+//     background: orange;
+//     font: {
+//         size: 30px;
+//         weight: 600;
+//     }
+// }
+// .box-2 {
+//     @include flexCenter;
+//     @include boxSize(150px, 150px);
+//     @include rounded(20px, $bl: 80px);
+//     background: greenyellow;
+//     margin-top: 20px;
+//     font: {
+//         size: 30px;
+//         weight: 600;
+//     }
+// }
+
+/* 2.2. Example about @mixin and @include */
+// @mixin grid($column, $spacing) {
+//     --column: #{$column};
+//     --spacing: #{$spacing};
+//     display: flex;
+//     flex-wrap: wrap;
+//     row-gap: var(--spacing);
+//     margin-left: calc(-1 * var(--spacing));
+//     > * {
+//         width: calc(100% / var(--column) - var(--spacing));
+//         margin-left: var(--spacing);
+//     }
+// }
+// .list {
+//     @include grid(4, 30px);
+//     .item {
+//         background: cadetblue;
+//         font: {
+//             size: 20px;
+//             weight: 600;
+//         }
+//     }
+// }
+
+/* 3. @content */
+@mixin grid($column, $spacing) {
+    --column: #{$column};
+    --spacing: #{$spacing};
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: var(--spacing);
+    margin-left: calc(-1 * var(--spacing));
+    > * {
+        width: calc(100% / var(--column) - var(--spacing));
+        margin-left: var(--spacing);
+    }
+}
+@mixin screen($device) {
+    @if $device == tablet {
+        @media(max-width: 991.98px) {
+            @content;
+        }
+    }
+    @if $device == mobile {
+        @media(max-width: 575.98px) {
+            @content;
+        }
+    }
+}
+.list {
+    @include grid(4, 30px);
+    @include screen(tablet) {
+        --column: 2;
+        --spacing: 20px;
+    }
+    @include screen(mobile) {
+        --column: 1;
+        --spacing: 10px;
+    }
+    .item {
+        background: cadetblue;
+        font: {
+            size: 20px;
+            weight: 600;
+        }
+    }
+}
