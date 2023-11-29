@@ -1,6 +1,6 @@
 /*Grid System*/
 @use "sass:math";
-//Breakpoints, dimension, container, row, column, vv
+//Breakpoints, Dimension, Container, Row, Column:
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -17,6 +17,8 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1320px,
 );
+
+// @debug map-get($container-max-widths, xxl);
 
 $grid-columns: 12;
 $grid-gutter-width: 30px;
@@ -74,6 +76,7 @@ $grid-gutter-width: 30px;
 
 @each $breakpoint, $dimension in $grid-breakpoints {
   $max-width: map-get($container-max-widths, $breakpoint);
+  // @debug $max-width;
   $is-xs: $breakpoint == xs;
   $infix: if($is-xs, "", "-#{$breakpoint}");
 
